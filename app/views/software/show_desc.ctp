@@ -6,10 +6,10 @@ $deny_print_acl = array("Oracle_Java");
 #Architecture Label workaround.
 $archLabel = array('i386'=>'Desktop','armel'=>'Mobile','x86_64'=>'Work Station');
 
-echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);?></a></h1> 
+echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);?></a></h1>
 
-<div class="level1"> 
-<p> 
+<div class="level1">
+<p>
 
 <img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="medialeft" align="left" alt="" width="200" />
 </p>
@@ -19,42 +19,42 @@ echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$
 echo $data[0]['Software']['softDesc'];
 ?>
 
-</p> 
+</p>
 <?PHP
 if(!in_array($data[0]['Software']['softName'],$deny_print_acl))
 {
 ?>
-<p> 
-<h4>Download size:</h4><?PHP 
-echo $data[0]['Software']['softSize']; 
+<p>
+<h4>Download size:</h4><?PHP
+echo $data[0]['Software']['softSize'];
 ?>
-</p> 
+</p>
 
-<p> 
-<h4>md5 checksum:</h4><?PHP 
-echo $data[0]['Software']['md5']; 
-?> 
+<p>
+<h4>md5 checksum:</h4><?PHP
+echo $data[0]['Software']['md5'];
+?>
 </p>
 <?PHP
-}  
+}
 ?>
-<p> 
-<h4>Architectures:</h4><?PHP 
+<p>
+<h4>Architectures:</h4><?PHP
 foreach($archTypeList as $var)
 {
 echo $html->link($archLabel[$var['Software']['arch']],"showDesc/".$data[0]['Software']['softName']."/".$var['Software']['arch']);
 echo "&nbsp;";
 }
- 
-?> 
-</p>  
 
-</div> 
- 
-<h2 class="sectionedit3"><a name="installation" id="installation">Installation</a></h2> 
-<div class="level2"> 
- 
-<p> 
+?>
+</p>
+
+</div>
+
+<h2 class="sectionedit3"><a name="installation" id="installation">Installation</a></h2>
+<div class="level2">
+
+<p>
 
 Please see the <a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a> for further information.
 </p>
@@ -83,25 +83,25 @@ if($data[0]['Software']['softApt']!="")
 if(!in_array($data[0]['Software']['softName'],$deny_print_acl))
 {
 ?>
-<<<<<<< HEAD
-<td align="center"><a href="<?PHP echo $data[0]['Software']['softDown'];?>"><img src="http://www.bodhilinux.com/images/downloadoffline.png" border="0"></a> 
- 
-=======
+<!--<<<<<<< HEAD-->
 <td align="center"><a href="<?PHP echo $data[0]['Software']['softDown'];?>"><img src="http://www.bodhilinux.com/images/downloadoffline.png" border="0"></a>
 
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+<!--=======-->
+
+
+<!-- >>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15-->
 </td>
 <?PHP
 }
 
 ?>
-<<<<<<< HEAD
-</tr> 
-</table> 
-=======
+<!--<<<<<<< HEAD-->
 </tr>
 </table>
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+<!--=======-->
+</tr>
+</table>
+<!-- >>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15-->
  <strong><a href="<?PHP echo $data[0]['Software']['softApt']?>">FAST INSTALL</a></strong> bypasses the apt-get update done with the "Install Now" button and can <strong><u>NOT</u></strong> be used with a fresh installation.
 
 </p>

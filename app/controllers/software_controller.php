@@ -12,17 +12,17 @@ class SoftwareController extends AppController {
   #load the Sanitize module, we need this to prevent XSS and sql injection attacks.
   function beforeFilter()
   {
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	$this->Sanitize = new Sanitize();
 	#Adding in data for the Arch menu for every page.
 	$archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
 	$this->set('archTypeDBList',$archTypeDBList);
-=======
+#=======
     $this->Sanitize = new Sanitize();
     #Adding in data for the Arch menu for every page.
     $archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
     $this->set('archTypeDBList',$archTypeDBList);
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+#>>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
   }
   #softbundles are here!
   function softbundles() {
@@ -40,7 +40,7 @@ class SoftwareController extends AppController {
   #function to handle subcategories.
   function showL2()
   {
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	#fetch params
 	$params = $this->params['pass'];
 	$softSubCat= $params[0];
@@ -57,7 +57,7 @@ class SoftwareController extends AppController {
 	{
 			    $this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat));
 	}
-=======
+#=======
     #fetch params
     $params = $this->params['pass'];
     $archType = "i386";
@@ -75,13 +75,13 @@ class SoftwareController extends AppController {
     {
                 $this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat));
     }
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+#>>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
   }
 
   #show each software and its full description, added meta.
   function showDesc()
-<<<<<<< HEAD
-  {	
+#<<<<<<< HEAD
+  {
 	$params = $this->params['pass'];
 	$softName= $params[0];
 	#Filter and handle architecture parameters
@@ -91,7 +91,7 @@ class SoftwareController extends AppController {
 	}
 	else
 	{#defaults to i386 if no arch is specified.
-		$archType = "i386";	
+		$archType = "i386";
 	}
 	#added architecture filter condition
 	$data = $this->Software->find('all',array('conditions'=>'Software.softName='."'".$softName."' AND Software.arch='".$archType."'"));
@@ -123,8 +123,8 @@ class SoftwareController extends AppController {
 	{
 			    $this->cakeError('oopsError', array('page'=>'showDesc'.$softName));
 	}
-=======
-  {
+#=======
+  #{
     $params = $this->params['pass'];
     $softName= $params[0];
     #Filter and handle architecture parameters
@@ -169,12 +169,12 @@ class SoftwareController extends AppController {
     {
                 $this->cakeError('oopsError', array('page'=>'showDesc'.$softName));
     }
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+#>>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
   }
 
 #live search handler
 function search() {
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	#postback characters
 	if (!empty($this->data['Software']['search']))
 	{
@@ -201,7 +201,7 @@ function search() {
 			$this->layout = 'ajax';
 		}
 	}
-=======
+#=======
     #postback characters
     if (!empty($this->data['Software']['search']))
     {
@@ -228,14 +228,14 @@ function search() {
             $this->layout = 'ajax';
         }
     }
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+#>>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
 }
 
 #description similar to search function, but handles only on clicking enter button in the search box. (Future disable the enter button).
 #duplicated code, need a fix for this in a future version.
 function searchPost()
 {
-<<<<<<< HEAD
+#<<<<<<< HEAD
 	#postback characters
 	if (!empty($this->data['Software']['search']))
 	{
@@ -258,11 +258,11 @@ function searchPost()
 			array_shift($metaSoftList);
 			#reverse for priority, show subcat first then meta.
 			$metaSoftList = array_reverse($metaSoftList);
-			$this->set('result', $metaSoftList);	
+			$this->set('result', $metaSoftList);
 			$this->render('search');
 		}
 	}
-=======
+#=======
     #postback characters
     if (!empty($this->data['Software']['search']))
     {
@@ -289,7 +289,7 @@ function searchPost()
             $this->render('search');
         }
     }
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+#>>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
 }
 
 #Lets burn a feed for the people.
@@ -330,40 +330,9 @@ function metaHandler($softName,$softSubCat,$softCat)
     return $metaSoftList;
 }
 
-#Arch pages and listing.
-function arch()
-{
-    $params = $this->params['pass'];
-    if($params[0]!="")
-    {
-        $archType = $params[0];
-    }
-    else
-    {#defaults to i386 if no arch is specified.
-        $archType = "i386";
-    }
-    $archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
-    $flag = "noSupport";
-    foreach($archTypeDBList as $var)
-    {
-        if($var['Software']['arch']==$archType)
-        {
-            $flag = "archSupported";
-        }
-    }
-    if($flag=="archSupported")
-    {
-        $data = $this->Software->find('all',array('fields'=>'DISTINCT Software.softName','conditions'=>"Software.arch='".$archType."' ORDER BY Software.softName ASC"));
-        $this->set('softNames',$data);
-        $this->set('archType',$archType);
-    }
-    else
-    {
-        $this->set('archError',"Not supported");
-    }
-}
 
-<<<<<<< HEAD
+
+#<<<<<<< HEAD
 #Arch pages and listing.
 function arch()
 {
@@ -374,7 +343,7 @@ function arch()
 	}
 	else
 	{#defaults to i386 if no arch is specified.
-		$archType = "i386";	
+		$archType = "i386";
 	}
 	$archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
 	$flag = "noSupport";
@@ -397,8 +366,8 @@ function arch()
 	}
 }
 
-=======
->>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
+#=======
+#>>>>>>> 37e5e366c0185773f4b4f2a3c8476ae440e0ee15
 
 }
 ?>
