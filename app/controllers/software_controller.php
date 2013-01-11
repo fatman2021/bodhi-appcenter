@@ -9,6 +9,7 @@ class SoftwareController extends AppController {
   var $uses = array('Software','Softbundle','Meta');
   #component handler for RSS feed
   var $components = array('RequestHandler');
+  
   #load the Sanitize module, we need this to prevent XSS and sql injection attacks.
   function beforeFilter()
   {
@@ -17,9 +18,10 @@ class SoftwareController extends AppController {
 	$archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
 	$this->set('archTypeDBList',$archTypeDBList);
   }
+
   #softbundles are here!
   function softbundles() {
-	$id = $this->params['pass'][0];
+ 	$id = $this->params['pass'][0];
 	$data = $this->Softbundle->find('all',array('conditions'=>'Softbundle.id='."'".$id."'"));
 	if(!empty($data))
 	{
@@ -27,7 +29,7 @@ class SoftwareController extends AppController {
 	}
 	else
 	{
-		$this->cakeError('oopsError', array('page'=>'softbundles'.$id));
+			    $this->cakeError('oopsError', array('page'=>'softbundles'.$id));
 	}
   }
   #function to handle subcategories.
@@ -35,10 +37,19 @@ class SoftwareController extends AppController {
   {
 	#fetch params
 	$params = $this->params['pass'];
-	$archType = "i386";
 	$softSubCat= $params[0];
+	#arch type
+	if($params[1]!="")
+        {
+                $archType = $params[1];
+        }
+        else
+        {#defaults to i386 if no arch is specified.
+                $archType = "i386";
+        }
+	$this->Session->write('arch', $archType);
 	#search for subcategory
-	$data = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$softSubCat."' AND Software.arch='".$archType."'",'order'=>array('Software.softName ASC'),'fields' => array('DISTINCT Software.softName')));
+	$data = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$softSubCat."'  AND Software.arch='".$archType."'",'order'=>array('Software.softName ASC'),'fields' => array('DISTINCT Software.softName')));
 	#create error handler
 	if(!empty($data))
 	{
@@ -48,13 +59,13 @@ class SoftwareController extends AppController {
 	}
 	else
 	{
-		$this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat));
+			    $this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat));
 	}
   }
-
+  
   #show each software and its full description, added meta.
   function showDesc()
-  {
+  {	
 	$params = $this->params['pass'];
 	$softName= $params[0];
 	#Filter and handle architecture parameters
@@ -64,24 +75,22 @@ class SoftwareController extends AppController {
 	}
 	else
 	{#defaults to i386 if no arch is specified.
-		$archType = "i386";
+		$archType = "i386";	
 	}
+	$this->Session->write('arch', $archType);
 	#added architecture filter condition
 	$data = $this->Software->find('all',array('conditions'=>'Software.softName='."'".$softName."' AND Software.arch='".$archType."'"));
 	#Total architectures supported for a particular application
 	$archTypeList = $this->Software->find('all',array('fields'=>'DISTINCT arch','conditions'=>'Software.softName='."'".$softName."'"));
 	#Call to meta Handler
-	$metaSoftList = $this->metaHandler($data[0]['Software']['softName'],$data[0]['Software']['softSubCat'],$data[0]['Software']['softCat']);
+	$metaSoftList = $this->metaHandler($data[0]['Software']['softName'],$data[0]['Software']['softSubCat'],$data[0]['Software']['softCat'],$archType);
 	if(!empty($data))
 	{
 		#append subcategory to the meta array
-		$list = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$data[0]['Software']['softSubCat']."' AND Software.arch='".$archType."'",'fields'=>array('Software.softName')));
+		$list = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$data[0]['Software']['softSubCat']."'",'fields'=>array('Software.softName')));
 		foreach($list as $var)
-		{   # skip the application displayed but add the rest
-			if ($softName != $var['Software']['softName'])
-			{
-				array_push($metaSoftList,$var['Software']['softName']);
-			}
+		{
+			array_push($metaSoftList,$var['Software']['softName']);
 		}
 		#remove duplicates
 		$metaSoftList = array_unique($metaSoftList);
@@ -97,7 +106,7 @@ class SoftwareController extends AppController {
 	}
 	else
 	{
-		$this->cakeError('oopsError', array('page'=>'showDesc'.$softName));
+			    $this->cakeError('oopsError', array('page'=>'showDesc'.$softName));
 	}
   }
 
@@ -128,12 +137,7 @@ function search() {
 			$this->set('result', $metaSoftList);
 			$this->layout = 'ajax';
 		}
-		else
-		{
-			$this->cakeError('searchError', array('query'=>$query));
-		}
 	}
-
 }
 
 #description similar to search function, but handles only on clicking enter button in the search box. (Future disable the enter button).
@@ -149,12 +153,12 @@ function searchPost()
 		if (strlen($query) >= 3)
 		{
 			#Call to meta Handler
-			$metaSoftList = $this->metaHandler($query,$query,$query);
+			$metaSoftList = $this->metaHandler($query,$query,$query,$this->Session->read('arch'));
 			#woah launch a mega DB search
 			$result = $this -> Software -> find('all',array('conditions'=>"softName LIKE '%".$query."%' OR softCat LIKE '%".str_replace(" ","_",$query)."%' OR softSubCat LIKE '%".str_replace(" ","_",$query)."%'"));
 			foreach($result as $var)
 			{
-				array_push($metaSoftList,$var['Software']['softName']);
+				array_push($metaSoftList,$var['Software']['softName'].",".$var['Software']['arch']);
 			}
 			#remove duplicates
 			$metaSoftList = array_unique($metaSoftList);
@@ -162,31 +166,33 @@ function searchPost()
 			array_shift($metaSoftList);
 			#reverse for priority, show subcat first then meta.
 			$metaSoftList = array_reverse($metaSoftList);
-			$this->set('result', $metaSoftList);
+			$this->set('result', $metaSoftList);	
 			$this->render('search');
 		}
-		else
-		{
-			$this->cakeError('searchError', array('query'=>$query));
-		}
 	}
-
 }
 
 #Lets burn a feed for the people.
-function generatefeed()
-{
+function generatefeed(){
+	#Filter and handle architecture parameters
+        if($params[0]!="")
+        {
+                $archType = $params[0];
+        }
+        else
+        {#defaults to i386 if no arch is specified.
+                $archType = "i386";
+        }
 	#grab the top 20 changed/updated softwares
-	$software = $this->Software->find('all',array('order'=>array('Software.entry_date DESC'),'limit' => 20));
+	$software = $this->Software->find('all',array('condition'=>'Software.arch="'.$archType.'"'),array('order'=>array('Software.entry_date DESC'),'limit' => 20));
 	#hmm checking for particular feed (feed.rss).
-	if(isset($this->params['requested']))
-	{
-		return $software;
-	}
-	$this->set('software',$software );
+	if(isset($this->params['requested'])) {
+                         return $software;
+                 }
+                 $this->set('software',$software );
 }
 
-function metaHandler($softName,$softSubCat,$softCat)
+function metaHandler($softName,$softSubCat,$softCat,$archType='i386')
 {
 	#meta search results added :)
 	$metaSoftList[]="test";
@@ -201,7 +207,7 @@ function metaHandler($softName,$softSubCat,$softCat)
 		foreach($simSoft as $var)
 		{
 			#take a crack with each meta record to find a match, this is a greedy database search statement.
-			$metaSoft = $this -> Software -> find('all',array('conditions'=>"softName LIKE '%".$var."%' OR softCat LIKE '%".str_replace(" ","_",$var)."%' OR softSubCat LIKE '%".str_replace(" ","_",$var)."%'",'fields'=>array('Software.softName')));
+			$metaSoft = $this -> Software -> find('all',array('conditions'=>"Software.arch='".$archType."' and  softName LIKE '%".$var."%' OR softCat LIKE '%".str_replace(" ","_",$var)."%' OR softSubCat LIKE '%".str_replace(" ","_",$var)."%'",'fields'=>array('Software.softName')));
 			foreach($metaSoft as $metaSoftName)
 			{
 				#push everything into a single array, easier to manage
@@ -223,7 +229,7 @@ function arch()
 	}
 	else
 	{#defaults to i386 if no arch is specified.
-		$archType = "i386";
+		$archType = "i386";	
 	}
 	$archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
 	$flag = "noSupport";

@@ -27,6 +27,7 @@
  * to use (in this case, /app/views/pages/home.ctp)...
  */
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/index.php',array('controller'=>'pages','action'=>'display','home'));
 	#handle the feed.rss generation to the correct internal generator.
 	Router::connect('/software/feed', array('controller' => 'software', 'action' => 'generatefeed'));
 	#ensure that cake detects and parses the rss extension, also notifys cake to load Rss helper

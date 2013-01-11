@@ -1,5 +1,5 @@
 <?PHP 
-$archLabel = array('i386'=>'Desktop','armel'=>'Mobile','x86_64'=>'Work Station');
+$archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 if(!isset($archError))
 {
 ?>

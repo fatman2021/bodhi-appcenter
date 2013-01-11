@@ -1,9 +1,9 @@
-<h1 class="sectionedit1"><a name="installation_instructions" id="installation_instructions">Installation Instructions</a></h1>
+<h2 class="sectionedit1"><a name="installation_instructions" id="installation_instructions">Installation Instructions</a></h2>
 <div class="level1">
 
 </div>
 
-<h2 class="sectionedit2"><a name="install_now" id="install_now">Install Now</a></h2>
+<h1 class="sectionedit2"><a name="install_now" id="install_now">Install Now</a></h1>
 <div class="level2">
 
 <p>
@@ -21,12 +21,12 @@ The <strong>Install Now</strong> button also causes your system to do an <code>a
 
 </div>
 
-<h2 class="sectionedit3"><a name="fast_install" id="fast_install">Fast Install</a></h2>
+<h1 class="sectionedit3"><a name="fast_install" id="fast_install">Quick Install</a></h1>
 <div class="level2">
 
 <p>
 
-The <strong>FAST INSTALL</strong> text link below the buttons will allow you to install a package without the <code>apt-get update</code> process.
+The <strong>Quick Install</strong> text link below the buttons will allow you to install a package without the <code>apt-get update</code> process.
 </p>
 
 <p>
@@ -35,7 +35,7 @@ The <strong>FAST INSTALL</strong> text link below the buttons will allow you to 
 
 </div>
 
-<h2 class="sectionedit4"><a name="download_installer" id="download_installer">Download Installer</a></h2>
+<h1 class="sectionedit4"><a name="download_installer" id="download_installer">Download Installer</a></h1>
 <div class="level2">
 
 <p>

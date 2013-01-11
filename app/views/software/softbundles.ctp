@@ -2,8 +2,8 @@
 echo $data[0]['Softbundle']['bundleDesc'];
 ?>
 
-<h2 class="sectionedit2"><a name="packages" id="packages">Packages</a></h2>
-<div class="level2">
+<h2><a name="packages" id="packages">Packages</a></h2>
+<div>
 
 <p>
 <?PHP
@@ -19,8 +19,8 @@ echo "*&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softName']
 
 </div>
 
-<h2 class="sectionedit3"><a name="installation" id="installation">Installation</a></h2>
-<div class="level2">
+<h2><a name="installation" id="installation">Installation</a></h2>
+<div>
 
 <p>
 
@@ -41,18 +41,5 @@ echo "*&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softName']
 Please see the <strong><a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a></strong> for further information.
 
 </p>
-<p>
-
-<h4>Download size:</h4><?PHP
-echo $data[0]['Softbundle']['softSize'];
-?>
-</p>
-
-<p>
-<h4>md5 checksum:</h4><?PHP
-echo $data[0]['Softbundle']['md5'];
-?>
-</p>
-<p>Note: The download size will vary for install now method.</p>
 
 </div>

@@ -77,8 +77,8 @@ class DATABASE_CONFIG {
 		'driver' => 'mysql',
 		'persistent' => false,
 		'host' => 'localhost',
-		'login' => 'root',
-		'password' => 'ittunnan',
+		'login' => 'appcenter',
+		'password' => '5A5WU7HeteSp',
 		'database' => 'appcenter',
 		'prefix' => 'appcenter_',
 	);
