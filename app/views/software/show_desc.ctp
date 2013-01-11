@@ -11,7 +11,17 @@ echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$
 echo $data[0]['Software']['softDesc'];
 ?>
 </p> 
- 
+<br />
+<p>
+<h4>Version:</h4><?PHP
+echo $data[0]['Software']['version'];
+?>
+</p>
+<br />
+<?PHP
+if($data[0]['Software']['arch']!="armel")
+{
+?>
 <p> 
 <h4>Download size:</h4><?PHP 
 echo $data[0]['Software']['softSize']; 
@@ -24,7 +34,11 @@ echo $data[0]['Software']['md5'];
 ?> 
 </p>  
 
-<p> 
+<p>
+<?PHP
+}
+?> 
+<br />
 <h4>Available Architectures:</h4><?PHP
 $archCount=0;
 foreach($archTypeList as $var)
@@ -56,11 +70,16 @@ Please see the <a href="/pages/install_instructions" class="wikilink1" title="in
 <p> 
 The <strong>Install Now</strong> button is for immediate installation on machines with a good internet connection
 </p> 
- 
+<?PHP
+if($data[0]['Software']['arch']!="armel")
+{
+?>
 <p> 
 The <strong>Download</strong> button is to download and transfer the package to a machine with no or slow internet connection.
 </p> 
- 
+<?PHP
+}
+?>
 <p> 
  
 <table width="35%"> 
@@ -70,17 +89,33 @@ The <strong>Download</strong> button is to download and transfer the package to 
 if($data[0]['Software']['softApt']!="")
 {
 ?>
+<br />
 <td align="center"><a href="<?PHP echo $data[0]['Software']['softApt'].'?refresh=yep';?>"><img src="http://www.bodhilinux.com/images/installnow.png" border="0"></a></td> 
 <?PHP
 }
 ?>
+
+<?PHP
+if($data[0]['Software']['arch']!="armel")
+{
+?>
 <td align="center"><a href="<?PHP echo $data[0]['Software']['softDown'];?>"><img src="http://www.bodhilinux.com/images/downloadoffline.png" border="0"></a> 
  
-</td></tr> 
+</td>
+<?PHP
+}
+?>
+</tr> 
 </table> 
  <strong><a href="<?PHP echo $data[0]['Software']['softApt']?>">Quick Install</a></strong> bypasses the apt-get update done with the "Install Now" button and can <strong><u>NOT</u></strong> be used with a fresh installation.
+<?PHP
+if($data[0]['Software']['arch']!="armel")
+{
+?>
 <p>Note: The download size will vary for install now method.</p>
-</p> 
+<?PHP
+}
+?> 
  
 </div> 
  <br />
