@@ -1,7 +1,7 @@
 <h2><a><?PHP 
 
 #Deny ACL to handle oracle java licensing issues.
-$deny_print_acl = array("Oracle_Java");
+$deny_print_acl = array("Oracle_Java", "Netflix_Desktop");
 
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);?></a></h2> 
