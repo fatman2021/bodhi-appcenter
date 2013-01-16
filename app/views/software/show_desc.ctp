@@ -1,4 +1,8 @@
 <h2><a><?PHP 
+
+#Deny ACL to handle oracle java licensing issues.
+$deny_print_acl = array("Oracle_Java");
+
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);?></a></h2> 
 <div> 
@@ -19,7 +23,7 @@ echo $data[0]['Software']['version'];
 </p>
 <br />
 <?PHP
-if($data[0]['Software']['arch']!="armel")
+if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
 {
 ?>
 <p> 
@@ -71,7 +75,7 @@ Please see the <a href="/pages/install_instructions" class="wikilink1" title="in
 The <strong>Install Now</strong> button is for immediate installation on machines with a good internet connection
 </p> 
 <?PHP
-if($data[0]['Software']['arch']!="armel")
+if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
 {
 ?>
 <p> 
@@ -96,7 +100,7 @@ if($data[0]['Software']['softApt']!="")
 ?>
 
 <?PHP
-if($data[0]['Software']['arch']!="armel")
+if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
 {
 ?>
 <td align="center"><a href="<?PHP echo $data[0]['Software']['softDown'];?>"><img src="http://www.bodhilinux.com/images/downloadoffline.png" border="0"></a> 
