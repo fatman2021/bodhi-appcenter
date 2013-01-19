@@ -22,13 +22,16 @@ Welcome to the Bodhi Linux software page.
 #cleanedup, now runs using Catorder to change order of categories
 
 foreach($softbundle as $var)
-{
-	echo "<p>";
-	echo $html->link($var['Softbundle']['bundleName'], array('controller' => 'software',      'action' => 'softbundles',$var['Softbundle']['id']));
-	echo "<br/>";
+{   if($var['Softbundle']['arch'] == 'i386')
+   {
+		echo "<p>";
+		echo $html->link($var['Softbundle']['bundleName'], array('controller' => 'software',      'action' => 'softbundles',$var['Softbundle']['id']));
+		echo "<br/>";
 
-	echo $var['Softbundle']['bundleShrtDesc'];
-	echo "</p>";
+		echo $var['Softbundle']['bundleShrtDesc'];
+		echo "</p>";
+		echo "<br />";
+    }
  } ?>
 
 <?PHP
@@ -40,7 +43,7 @@ foreach($softbundle as $var)
 <div> 
 <?PHP  
 foreach($softPackages as $var)
-{   echo "<p>";
+{   
     if($var['Software']['arch'] == 'i386')
     {    echo "<p>";
 	     echo $html->link(str_replace("_"," ",$var['Software']['softName']), array('controller' => 'software',  'action' => 'showDesc',$var['Software']['softName']));
