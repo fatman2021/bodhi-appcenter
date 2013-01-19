@@ -13,15 +13,15 @@ class SoftwareController extends AppController {
   #load the Sanitize module, we need this to prevent XSS and sql injection attacks.
   function beforeFilter()
   {
-	$this->Sanitize = new Sanitize();
-	#Adding in data for the Arch menu for every page.
-	$archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
-	$this->set('archTypeDBList',$archTypeDBList);
+	  $this->Sanitize = new Sanitize();
+	  #Adding in data for the Arch menu for every page.
+	  $archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
+	  $this->set('archTypeDBList',$archTypeDBList);
   }
 
   #softbundles are here!
   function softbundles() {
- 	$id = $this->params['pass'][0];
+	$id = $this->params['pass'][0];
 	$data = $this->Softbundle->find('all',array('conditions'=>'Softbundle.id='."'".$id."'"));
 	if(!empty($data))
 	{
@@ -29,7 +29,7 @@ class SoftwareController extends AppController {
 	}
 	else
 	{
-			    $this->cakeError('oopsError', array('page'=>'softbundles'.$id));
+		$this->cakeError('oopsError', array('page'=>'softbundles'.$id));
 	}
   }
   #function to handle subcategories.
@@ -39,14 +39,15 @@ class SoftwareController extends AppController {
 	$params = $this->params['pass'];
 	$softSubCat= $params[0];
 	#arch type
-	if($params[1]!="")
-        {
-                $archType = $params[1];
-        }
-        else
-        {#defaults to i386 if no arch is specified.
-                $archType = "i386";
-        }
+	#if($params[1]!="")
+	if (isset($params[1]))
+	{
+		$archType = $params[1];
+	}
+	else
+	{#defaults to i386 if no arch is specified.
+		$archType = "i386";
+	}
 	$this->Session->write('arch', $archType);
 	#search for subcategory
 	$data = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$softSubCat."'  AND Software.arch='".$archType."'",'order'=>array('Software.softName ASC'),'fields' => array('DISTINCT Software.softName')));
@@ -59,55 +60,56 @@ class SoftwareController extends AppController {
 	}
 	else
 	{
-			    $this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat));
+		$this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat));
 	}
   }
   
   #show each software and its full description, added meta.
   function showDesc()
-  {	
-	$params = $this->params['pass'];
-	$softName= $params[0];
-	#Filter and handle architecture parameters
-	if($params[1]!="")
-	{
-		$archType = $params[1];
-	}
-	else
-	{#defaults to i386 if no arch is specified.
-		$archType = "i386";	
-	}
-	$this->Session->write('arch', $archType);
-	#added architecture filter condition
-	$data = $this->Software->find('all',array('conditions'=>'Software.softName='."'".$softName."' AND Software.arch='".$archType."'"));
-	#Total architectures supported for a particular application
-	$archTypeList = $this->Software->find('all',array('fields'=>'DISTINCT arch','conditions'=>'Software.softName='."'".$softName."'"));
-	#Call to meta Handler
-	$metaSoftList = $this->metaHandler($data[0]['Software']['softName'],$data[0]['Software']['softSubCat'],$data[0]['Software']['softCat'],$archType);
-	if(!empty($data))
-	{
-		#append subcategory to the meta array
-		$list = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$data[0]['Software']['softSubCat']."'",'fields'=>array('Software.softName')));
-		foreach($list as $var)
+  {     
+		$params = $this->params['pass'];
+		$softName= $params[0];
+		#Filter and handle architecture parameters
+		#if($params[1]!="")
+		if (isset($params[1]))
 		{
-			array_push($metaSoftList,$var['Software']['softName']);
+			$archType = $params[1];
 		}
-		#remove duplicates
-		$metaSoftList = array_unique($metaSoftList);
-		#remove test value
-		array_shift($metaSoftList);
-		#reverse for priority, show subcat first then meta.
-		$metaSoftList = array_reverse($metaSoftList);
-		$this->set('data',$data);
-		#set the new meta variable, no change to view, only to the core logic!
-		$this->set('list',$metaSoftList);
-		#set the archtype list for display
-		$this->set('archTypeList',$archTypeList);
-	}
-	else
-	{
-			    $this->cakeError('oopsError', array('page'=>'showDesc'.$softName));
-	}
+		else
+		{#defaults to i386 if no arch is specified.
+			$archType = "i386";     
+		}
+		$this->Session->write('arch', $archType);
+		#added architecture filter condition
+		$data = $this->Software->find('all',array('conditions'=>'Software.softName='."'".$softName."' AND Software.arch='".$archType."'"));
+		#Total architectures supported for a particular application
+		$archTypeList = $this->Software->find('all',array('fields'=>'DISTINCT arch','conditions'=>'Software.softName='."'".$softName."'"));
+		#Call to meta Handler
+		$metaSoftList = $this->metaHandler($data[0]['Software']['softName'],$data[0]['Software']['softSubCat'],$data[0]['Software']['softCat'],$archType);
+		if(!empty($data))
+		{
+			#append subcategory to the meta array
+			$list = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$data[0]['Software']['softSubCat']."'",'fields'=>array('Software.softName')));
+			foreach($list as $var)
+			{
+				array_push($metaSoftList,$var['Software']['softName']);
+			}
+			#remove duplicates
+			$metaSoftList = array_unique($metaSoftList);
+			#remove test value
+			array_shift($metaSoftList);
+			#reverse for priority, show subcat first then meta.
+			$metaSoftList = array_reverse($metaSoftList);
+			$this->set('data',$data);
+			#set the new meta variable, no change to view, only to the core logic!
+			$this->set('list',$metaSoftList);
+			#set the archtype list for display
+			$this->set('archTypeList',$archTypeList);
+		}
+		else
+		{
+			$this->cakeError('oopsError', array('page'=>'showDesc'.$softName));
+		}
   }
 
 #live search handler
@@ -166,7 +168,7 @@ function searchPost()
 			array_shift($metaSoftList);
 			#reverse for priority, show subcat first then meta.
 			$metaSoftList = array_reverse($metaSoftList);
-			$this->set('result', $metaSoftList);	
+			$this->set('result', $metaSoftList);    
 			$this->render('search');
 		}
 	}
@@ -175,21 +177,22 @@ function searchPost()
 #Lets burn a feed for the people.
 function generatefeed(){
 	#Filter and handle architecture parameters
-        if($params[0]!="")
-        {
-                $archType = $params[0];
-        }
-        else
-        {#defaults to i386 if no arch is specified.
-                $archType = "i386";
-        }
+	#if($params[0]!="")
+	if(isset($params[0]))
+	{
+		$archType = $params[0];
+	}
+	else
+	{#defaults to i386 if no arch is specified.
+		$archType = "i386";
+	}
 	#grab the top 20 changed/updated softwares
 	$software = $this->Software->find('all',array('condition'=>'Software.arch="'.$archType.'"'),array('order'=>array('Software.entry_date DESC'),'limit' => 20));
 	#hmm checking for particular feed (feed.rss).
 	if(isset($this->params['requested'])) {
-                         return $software;
-                 }
-                 $this->set('software',$software );
+			return $software;
+	}
+	$this->set('software',$software );
 }
 
 function metaHandler($softName,$softSubCat,$softCat,$archType='i386')
@@ -199,9 +202,13 @@ function metaHandler($softName,$softSubCat,$softCat,$archType='i386')
 	#find similar soft
 	$simSoft = $this->Meta-> find('all',array('conditions'=>"metainfo LIKE '%".$softName."%' OR metainfo LIKE '%".str_replace(" ","_",$softSubCat)."%' OR metainfo LIKE '%".str_replace(" ","_",$softCat)."%'"));
 	#split similar software
-	$simSoft = explode(':',$simSoft[0]['Meta']['metaInfo']);
+	if (isset($simSoft[0]['Meta']['metaInfo']))
+	{
+		$simSoft = explode(':',$simSoft[0]['Meta']['metaInfo']);
+	}
 	#prevent sql table dump
-	if ($simSoft[0]!="")
+	#if ($simSoft[0]!="")
+	if (isset($simSoft[0]))
 	{
 		#create similar software to display from meta
 		foreach($simSoft as $var)
@@ -210,8 +217,8 @@ function metaHandler($softName,$softSubCat,$softCat,$archType='i386')
 			$metaSoft = $this -> Software -> find('all',array('conditions'=>"Software.arch='".$archType."' and  softName LIKE '%".$var."%' OR softCat LIKE '%".str_replace(" ","_",$var)."%' OR softSubCat LIKE '%".str_replace(" ","_",$var)."%'",'fields'=>array('Software.softName')));
 			foreach($metaSoft as $metaSoftName)
 			{
-				#push everything into a single array, easier to manage
-				array_push($metaSoftList,$metaSoftName['Software']['softName']);
+					#push everything into a single array, easier to manage
+					array_push($metaSoftList,$metaSoftName['Software']['softName']);
 			}
 		}
 		#chuck back the data
@@ -229,7 +236,7 @@ function arch()
 	}
 	else
 	{#defaults to i386 if no arch is specified.
-		$archType = "i386";	
+		$archType = "i386";     
 	}
 	$archTypeDBList = $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
 	$flag = "noSupport";
