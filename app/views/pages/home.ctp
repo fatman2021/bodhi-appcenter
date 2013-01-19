@@ -40,10 +40,12 @@ foreach($softbundle as $var)
 <div> 
 <?PHP  
 foreach($softPackages as $var)
-{
-	echo "<p>";
-	echo $html->link(str_replace("_"," ",$var['Software']['softName']), array('controller' => 'software',      'action' => 'showDesc',$var['Software']['softName']));
-	echo "</p>";
+{   echo "<p>";
+    if($var['Software']['arch'] == 'i386')
+    {    echo "<p>";
+	     echo $html->link(str_replace("_"," ",$var['Software']['softName']), array('controller' => 'software',  'action' => 'showDesc',$var['Software']['softName']));
+	     echo "</p>";
+	}
  } ?>
  
 </div>
