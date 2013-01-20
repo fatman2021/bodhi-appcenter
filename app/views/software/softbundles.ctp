@@ -18,13 +18,39 @@ echo "*&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softName']
 </p>
 
 </div>
+<br />
+<div>
+<p> 
+<h4>Download size:</h4><?PHP 
+echo $data[0]['Softbundle']['softSize']; 
+?>
+</p> 
 
+<p> 
+<h4>md5 checksum:</h4><?PHP 
+echo $data[0]['Softbundle']['md5']; 
+?> 
+</p>  
+<br />
+<h4>Available Architectures:</h4>
+<?PHP
+    # Fixme please
+    if ($data[0]['Softbundle']['id'] == "1" OR $data[0]['Softbundle']['id'] == "3" ){
+		echo "&nbsp;".$html->link("32bit","softbundles/"."1");
+		echo ",&nbsp;".$html->link("64bit","softbundles/"."3");  
+    }
+    else{
+		echo "&nbsp;".$html->link("32bit","softbundles/"."2");
+		echo ",&nbsp;".$html->link("64bit","softbundles/"."4"); 
+	}
+?>
+<br />
+</div>
+<br />
 <h2><a name="installation" id="installation">Installation</a></h2>
 <div>
 
 <p>
-
-
 <table width="35%">
 <tr><td align="center"><a href="<?PHP echo $data[0]['Softbundle']['bundleApt']."?refresh=yep";?>"><img src="http://www.bodhilinux.com/images/installnow.png" border="0"></a></td>
 
