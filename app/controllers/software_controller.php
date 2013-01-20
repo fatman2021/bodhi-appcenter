@@ -89,7 +89,9 @@ class SoftwareController extends AppController {
 		if(!empty($data))
 		{
 			#append subcategory to the meta array
-			$list = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$data[0]['Software']['softSubCat']."'",'fields'=>array('Software.softName')));
+			$list = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$data[0]['Software']['softSubCat']."' AND Software.arch='".$archType."'",'fields'=>array('Software.softName')));
+
+
 			foreach($list as $var)
 			{
 				array_push($metaSoftList,$var['Software']['softName']);
