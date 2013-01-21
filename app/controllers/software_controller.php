@@ -173,6 +173,10 @@ function searchPost()
 			$this->set('result', $metaSoftList);    
 			$this->render('search');
 		}
+		else
+		{
+			$this->set('query', $query);
+		}
 	}
 }
 
