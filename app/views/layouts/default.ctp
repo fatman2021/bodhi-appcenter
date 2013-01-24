@@ -83,7 +83,7 @@ foreach($archTypeDBList as $var)
 <div id='footer'>
 	<?php echo $this->element('sql_dump'); ?>
 	<footer class="gradient">
-		<p><small>&copy; Copyright Bodhi Linux 2012. All Rights Reserved - Hosted by <a target="_blank" href="https://www.vaultnetworks.com">vaultnetworks</a></small></p>
+		<p><small>&copy; Copyleft Bodhi Linux 2013. All Wrongs Reserved - Hosted by <a target="_blank" href="https://www.vaultnetworks.com">vaultnetworks</a></small></p>
 	</footer>
 <?PHP
 echo "<center><font color='black' size='2'>Bodhi Appcenter, &nbsp;".Configure::read( 'Appcenter.build' )."</font></center>";

@@ -33,7 +33,7 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
-	Configure::write('debug', 0);
+	Configure::write('debug', 1);
 
 /**
  * CakePHP Log Level:
@@ -91,7 +91,7 @@
  * Turn off all caching application-wide.
  *
  */
-	//Configure::write('Cache.disable', true);
+	Configure::write('Cache.disable', true);
 
 /**
  * Enable cache checking.
@@ -102,7 +102,7 @@
  * or in each action using $this->cacheAction = true.
  *
  */
-	//Configure::write('Cache.check', true);
+	Configure::write('Cache.check', true);
 
 /**
  * Defines the default error type when using the log() function. Used for
@@ -246,8 +246,8 @@
 *
 **/
 
-Configure::write('Appcenter.build','Build: Stable 0.2.1-209a6ec');
-Configure::write('Appcenter.year','2011-2012');
+Configure::write('Appcenter.build','Build: Stable 0.2.2-9a62ec3 ');
+Configure::write('Appcenter.year','2011-2013');
 Configure::write('Appcenter.copyright','&copy; Bodhilinux Web Team');
 /**
  * If you are on PHP 5.3 uncomment this line and correct your server timezone
