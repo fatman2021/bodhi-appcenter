@@ -18,20 +18,14 @@ echo "*&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softName']
 </p>
 
 </div>
-<br />
 <div>
 <p> 
 <h4>Download size:</h4><?PHP 
 echo $data[0]['Softbundle']['softSize']; 
 ?>
-</p> 
-
-<p> 
 <h4>md5 checksum:</h4><?PHP 
 echo $data[0]['Softbundle']['md5']; 
 ?> 
-</p>  
-<br />
 <h4>Available Architectures:</h4>
 <?PHP
     # Fixme please
@@ -44,9 +38,8 @@ echo $data[0]['Softbundle']['md5'];
 		echo ",&nbsp;".$html->link("64bit","softbundles/"."4"); 
 	}
 ?>
-<br />
+</p>
 </div>
-<br />
 <h2><a name="installation" id="installation">Installation</a></h2>
 <div>
 
@@ -59,8 +52,6 @@ echo $data[0]['Softbundle']['md5'];
 </td></tr>
 </table>
 <strong><a href="apt:bodhi-recommends">FAST INSTALL</a></strong> bypasses the apt-get update done with the "Install Now" button and can <strong><u>NOT</u></strong> be used with a fresh installation.
-
-
 </p>
 
 <p>

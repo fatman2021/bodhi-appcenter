@@ -15,34 +15,23 @@ echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$
 echo $data[0]['Software']['softDesc'];
 ?>
 </p> 
-<br />
 <p>
 <h4>Version:</h4><?PHP
 echo $data[0]['Software']['version'];
 ?>
-</p>
-<br />
 <?PHP
 if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
 {
 ?>
-<p> 
 <h4>Download size:</h4><?PHP 
 echo $data[0]['Software']['softSize']; 
 ?>
-</p> 
-
-<p> 
 <h4>md5 checksum:</h4><?PHP 
 echo $data[0]['Software']['md5']; 
 ?> 
-</p>  
-
-<p>
 <?PHP
 }
 ?> 
-<br />
 <h4>Available Architectures:</h4><?PHP
 $archCount=0;
 foreach($archTypeList as $var)
@@ -63,7 +52,6 @@ $archCount++;
 </p>  
 
 </div> 
-<br /> 
 <h1><a name="installation" id="installation">Installation</a></h1> 
 <div> 
  
@@ -93,7 +81,6 @@ The <strong>Download</strong> button is to download and transfer the package to 
 if($data[0]['Software']['softApt']!="")
 {
 ?>
-<br />
 <td align="center"><a href="<?PHP echo $data[0]['Software']['softApt'].'?refresh=yep';?>"><img src="http://www.bodhilinux.com/images/installnow.png" border="0"></a></td> 
 <?PHP
 }
@@ -122,7 +109,6 @@ if($data[0]['Software']['arch']!="armel")
 ?> 
  
 </div> 
- <br />
 <h1><a>Related / Similar Applications</a></h1> 
 <div> 
 <p>
@@ -134,7 +120,6 @@ foreach($list as $var)
 ?>
 </p> 
 </div> 
-<br /> 
 <h1><a>Software Homepage</a></h1> 
 <div> 
 <p> 
