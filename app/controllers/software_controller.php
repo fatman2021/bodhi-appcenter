@@ -53,10 +53,14 @@ class SoftwareController extends AppController {
 	$data = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$softSubCat."'  AND Software.arch='".$archType."'",'order'=>array('Software.softName ASC'),'fields' => array('DISTINCT Software.softName')));
 	#create error handler
 	if(!empty($data))
-	{
-		#set display variables
-		$this->set('data',$data);
-		$this->set('softSubCat',$softSubCat);
+	{   if(count($data) != 1){
+			#set display variables
+			$this->set('data',$data);
+			$this->set('softSubCat',$softSubCat);
+	     }
+	     else{
+			 $this->redirect(array('controller' => 'software','action' => 'showDesc',$data[0]['Software']['softName']));
+		 }
 	}
 	else
 	{
