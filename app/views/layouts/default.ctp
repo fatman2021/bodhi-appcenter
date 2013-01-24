@@ -40,6 +40,7 @@ adjustAcPosition = function(element, update) {
    Effect.Appear(update,{duration:0.15});
 }
 </script>
+<section>
 <div id='searchBar' align='right'>
 <?php echo $form->create('Software',array('url' => '/software/searchPost')); ?>
 <?php 
@@ -75,11 +76,12 @@ foreach($archTypeDBList as $var)
 ?>
 </div>
 <!-- end -->
-
+<br />
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $content_for_layout; ?>
 </div>
 </div>
+</section>
 <div id='footer'>
 	<?php echo $this->element('sql_dump'); ?>
 	<footer class="gradient">
@@ -94,6 +96,7 @@ echo "<center><font color='black' size='2'>Bodhi Appcenter, &nbsp;".Configure::r
 </script>
 
 </div>
+<br />
 <script> 
 jQuery.noConflict();
 </script>

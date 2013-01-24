@@ -5,14 +5,11 @@
 Welcome to the Bodhi Linux software page. 
 <p/>
 <p>Here you will find easy to install software for any task on your Bodhi desktop! <p/>
-<br />
 <p>Note that Midori or Firefox are <strong>REQUIRED</strong> for the “Install Now” method. The “Download” method will work in any browser. Please see the <a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions.</a></p>
 </p> 
-<br />
 <p>The main page lists only the 32bit software. For now, please use the architecture pages to search for <strong>64bit</strong> and <strong>armel</strong> software or use the software search feature for the same.
 </p>
 </div> 
-<br />
 <h1><a>Software bundles</a></h1> 
 <div class="level2"> 
  
@@ -26,33 +23,27 @@ foreach($softbundle as $var)
    {
 		echo "<p>";
 		echo $html->link($var['Softbundle']['bundleName'], array('controller' => 'software',      'action' => 'softbundles',$var['Softbundle']['id']));
-		echo "<br/>";
-
+		echo "<br />";
 		echo $var['Softbundle']['bundleShrtDesc'];
 		echo "</p>";
-		echo "<br />";
     }
  } ?>
 
 <?PHP
 #software packages section
 ?>
-<br />
 <h1><a>Bodhi Software Packages</a></h1>
-
 <div> 
 <?PHP  
 foreach($softPackages as $var)
 {   
     if($var['Software']['arch'] == 'i386')
-    {    echo "<p>";
-	     echo $html->link(str_replace("_"," ",$var['Software']['softName']), array('controller' => 'software',  'action' => 'showDesc',$var['Software']['softName']));
-	     echo "</p>";
+    {    echo $html->link(str_replace("_"," ",$var['Software']['softName']), array('controller' => 'software',  'action' => 'showDesc',$var['Software']['softName']));
+	     echo "<br />";
 	}
  } ?>
  
 </div>
-<br />
  
 </div>
 <br />
@@ -93,14 +84,11 @@ foreach($software as $var)
 			{
 				echo '</ul></div>';
 			}
-
 		}
 		?>
-		
 	<?PHP
 	}
-	echo '<br />';
+echo "<br />";
 }
 ?>
-
 </div>
