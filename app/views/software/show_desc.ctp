@@ -108,17 +108,23 @@ if($data[0]['Software']['arch']!="armel")
 }
 ?> 
  
-</div> 
+</div>
+<?PHP
+if (count($list) != 1)
+{?>
 <h1><a>Related / Similar Applications</a></h1> 
 <div> 
 <p>
 <?PHP
 foreach($list as $var)
-{
+{	if ($var != $data[0]['Software']['softName']){
 		echo $html->link(str_replace("_"," ",$var), array('controller' => 'software','action' => 'showDesc',$var))."<br/>";
+    }
 }
 ?>
 </p> 
+<?PHP 
+} ?>
 </div> 
 <h1><a>Software Homepage</a></h1> 
 <div> 
