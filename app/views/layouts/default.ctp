@@ -53,9 +53,7 @@ echo $ajax->autoComplete('Software.search', '/software/search', array('onShow' =
 </div>
 <div class="page"> 
 <!--Adding for arch types -->
-<div style='position:absolute;
-        right:270px;
-        width:300px;'>
+<div style='text-align: center;'>
 <b>Architectures:&nbsp;&nbsp;</b>
 <?PHP
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
