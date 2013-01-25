@@ -4,7 +4,7 @@ echo $data[0]['Softbundle']['bundleDesc'];
 
 <h2><a name="packages" id="packages">Packages</a></h2>
 <div>
-
+<br />
 <p>
 <?PHP
 $list = explode(',',$data[0]['Softbundle']['softList']);
@@ -12,7 +12,7 @@ foreach($list as $var)
 {
 $data1 = ClassRegistry::init('Software')->find('all',array('conditions'=>'Software.id='.$var,'fields'=>array('Software.softName','Software.softSubCat')));
 
-echo "*&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softName']), array('controller' => 'software','action' => 'showDesc',$data1[0]['Software']['softName']))."&nbsp;-&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softSubCat']), array('controller' => 'software','action' => 'showL2',$data1[0]['Software']['softSubCat']))."<br/>";
+echo "&nbsp;&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softName']), array('controller' => 'software','action' => 'showDesc',$data1[0]['Software']['softName']))."&nbsp;-&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softSubCat']), array('controller' => 'software','action' => 'showL2',$data1[0]['Software']['softSubCat']))."<br/>";
 }
 ?>
 </p>
