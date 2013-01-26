@@ -2,7 +2,7 @@
 /* File: /app/views/software/search.ctp */
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 if (isset($result)) {
-print '<ul>';
+print '<ul style="text-align:left">';
 foreach ($result as $user)
 {
     $list = explode(',',$user);
