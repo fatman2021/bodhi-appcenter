@@ -86,16 +86,13 @@ class SoftwareController extends AppController {
 		$this->Session->write('arch', $archType);
 		#added architecture filter condition
 		$data = $this->Software->find('all',array('conditions'=>'Software.softName='."'".$softName."' AND Software.arch='".$archType."'"));
-		#Total architectures supported for a particular application
-		$archTypeList = $this->Software->find('all',array('fields'=>'DISTINCT arch','conditions'=>'Software.softName='."'".$softName."'"));
-		#Call to meta Handler
-		$metaSoftList = $this->metaHandler($data[0]['Software']['softName'],$data[0]['Software']['softSubCat'],$data[0]['Software']['softCat'],$archType);
 		if(!empty($data))
-		{
+		{   #Total architectures supported for a particular application
+			$archTypeList = $this->Software->find('all',array('fields'=>'DISTINCT arch','conditions'=>'Software.softName='."'".$softName."'"));
+			#Call to meta Handler
+			$metaSoftList = $this->metaHandler($data[0]['Software']['softName'],$data[0]['Software']['softSubCat'],$data[0]['Software']['softCat'],$archType);
 			#append subcategory to the meta array
 			$list = $this->Software->find('all',array('conditions'=>'Software.softSubCat='."'".$data[0]['Software']['softSubCat']."' AND Software.arch='".$archType."'",'fields'=>array('Software.softName')));
-
-
 			foreach($list as $var)
 			{
 				array_push($metaSoftList,$var['Software']['softName']);
