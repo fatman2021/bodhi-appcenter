@@ -108,7 +108,8 @@ if($data[0]['Software']['arch']!="armel")
 ?>
 <p>Note: The download size will vary for install now method.</p>
 <?PHP
-}
+} else {
+echo "<br /><br />";}
 ?> 
  
 </div>
