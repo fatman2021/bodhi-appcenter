@@ -6,15 +6,18 @@ $deny_print_acl = array("Oracle_Java", "Netflix_Desktop");
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);?></a></h2> 
 <div> 
+<?php
+if (!empty($data[0]['Software']['softScreenie'])){ ?>
 <p> 
 <img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="medialeft" align="left" alt="" width="200" style="margin:5px 5px 5px 5px;"/>
-</p> 
- 
-<p> 
+</p>
+ <?php 
+ } else echo "<br />" ?>
+
 <?PHP 
 echo $data[0]['Software']['softDesc'];
 ?>
-</p> 
+
 <p>
 <h4>Version:</h4><?PHP
 echo $data[0]['Software']['version'];
