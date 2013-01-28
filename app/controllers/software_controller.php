@@ -12,8 +12,7 @@ class SoftwareController extends AppController {
   
   #load the Sanitize module, we need this to prevent XSS and sql injection attacks.
   function beforeFilter()
-  {
-	  $this->Sanitize = new Sanitize();
+  {   $this->Sanitize = new Sanitize();
 	  #Adding in data for the Arch menu for every page.
 	  $archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
 	  $this->set('archTypeDBList',$archTypeDBList);
@@ -28,8 +27,11 @@ class SoftwareController extends AppController {
 		$this->set('data',$data);
 	}
 	else
-	{
-		$this->cakeError('oopsError', array('page'=>'softbundles'.$id));
+	{   # Duplicating beforeFilter code here because it is not executed for cakeError
+		# Adding in data for the Arch menu for every page.
+		$archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
+		$this->set('archTypeDBList',$archTypeDBList);
+		$this->cakeError('oopsError', array('page'=>'softbundles'.$id, 'archTypeDBList'=>$archTypeDBList));
 	}
   }
   #function to handle subcategories.
@@ -63,8 +65,11 @@ class SoftwareController extends AppController {
 		 }
 	}
 	else
-	{
-		$this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat));
+	{   # Duplicating beforeFilter code here because it is not executed for cakeError
+		# Adding in data for the Arch menu for every page.
+		$archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
+		$this->set('archTypeDBList',$archTypeDBList);
+		$this->cakeError('oopsError', array('page'=>'showL2'.$softSubCat, 'archTypeDBList'=>$archTypeDBList));
 	}
   }
   
@@ -110,8 +115,11 @@ class SoftwareController extends AppController {
 			$this->set('archTypeList',$archTypeList);
 		}
 		else
-		{
-			$this->cakeError('oopsError', array('page'=>'showDesc'.$softName));
+		{   # Duplicating beforeFilter code here because it is not executed for cakeError
+			# Adding in data for the Arch menu for every page.
+			$archTypeDBList = $this->Software->find('all',array('fields'=>'DISTINCT arch'));
+			$this->set('archTypeDBList',$archTypeDBList);
+			$this->cakeError('oopsError', array('page'=>'showDesc'.$softName, 'archTypeDBList'=>$archTypeDBList));
 		}
   }
 
