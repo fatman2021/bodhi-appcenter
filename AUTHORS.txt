@@ -5,4 +5,8 @@ Jose Manimala jose AT bodhilinux.com
 Rbt. Y-Lee    ylee AT bodhilinux.com
 
 Special thanks to for the css:
-Joris "aeonius" van Dijk joris AT bodhilinux.com
+	Joris "aeonius" van Dijk joris AT bodhilinux.com
+
+And to the Graphics Artists:
+	Jason Peel jason AT bodhilinux.com
+	Micah Denn micahtron13 AT gmail.com
