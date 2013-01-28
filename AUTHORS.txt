@@ -5,4 +5,4 @@ Jose Manimala jose AT bodhilinux.com
 Rbt. Y-Lee    ylee AT bodhilinux.com
 
 Special thanks to for the css:
-Joris "aeonius" van Dijkjoris AT bodhilinux.com
+Joris "aeonius" van Dijk joris AT bodhilinux.com
