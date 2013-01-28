@@ -4,3 +4,5 @@ Bodhi-appcenter:     http://appcenter.bodhilinux.com/
 Jose Manimala jose AT bodhilinux.com
 Rbt. Y-Lee    ylee AT bodhilinux.com
 
+Special thanks to for the css:
+Joris "aeonius" van Dijkjoris AT bodhilinux.com
