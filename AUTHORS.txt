@@ -1,0 +1,6 @@
+Bodhi-appcenter:     http://appcenter.bodhilinux.com/
+                 dev http://origin.al.eu.org/
+
+Jose Manimala jose AT bodhilinux.com
+Rbt. Y-Lee    ylee AT bodhilinux.com
+
