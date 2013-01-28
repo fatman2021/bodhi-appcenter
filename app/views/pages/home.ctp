@@ -3,8 +3,8 @@
 <div class="level1"> 
 <p> 
 Welcome to the Bodhi Linux software page. 
-<p/>
-<p>Here you will find easy to install software for any task on your Bodhi desktop! <p/>
+</p>
+<p>Here you will find easy to install software for any task on your Bodhi desktop! </p>
 <p>Note that Midori or Firefox are <strong>REQUIRED</strong> for the “Install Now” method. The “Download” method will work in any browser. Please see the <a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions.</a></p>
 </p> 
 <p>The main page lists only the 32bit software. For now, please use the architecture pages to search for <strong>64bit</strong> and <strong>armel</strong> software or use the software search feature for the same.
