@@ -1,4 +1,4 @@
-<h2><a>Bodhi Linux AppCenter</a></h2> 
+<h2  style="color:black; border-bottom: 1px solid #ff6600; border-bottom-width: auto; display: inline-block; margin-bottom: 3px; padding-bottom: 4px;">Bodhi Linux AppCenter</h2> 
 <br />
 <div class="level1"> 
 <p> 
@@ -10,7 +10,7 @@ Welcome to the Bodhi Linux software page.
 <p>The main page lists only the 32bit software. For now, please use the architecture pages to search for <strong>64bit</strong> and <strong>armel</strong> software or use the software search feature for the same.
 </p>
 </div> 
-<h1><a>Software bundles</a></h1> 
+<h1>Software bundles</h1> 
 <div class="level2"> 
  
 <?PHP  
@@ -34,7 +34,7 @@ foreach($softbundle as $var)
 <?PHP
 #software packages section
 ?>
-<h1><a>Bodhi Software Packages</a></h1>
+<h1>Bodhi Software Packages</h1>
 <div> 
 <?PHP  
 foreach($softPackages as $var)
@@ -51,7 +51,7 @@ foreach($softPackages as $var)
 </div>
 <br />
 
-<h1><a>Software Categories</a></h1> 
+<h1>Software Categories</h1> 
 <div> 
 
 <?PHP
@@ -59,7 +59,7 @@ $var="";
 foreach($software as $var)
 { 
 ?>
-<h3><a><?PHP echo str_replace("_"," ",$var); ?></a></h3>
+<h3><?PHP echo str_replace("_"," ",$var); ?></h3>
 <?PHP
 	
 	for($i=0;$i<$softcount;$i++)
