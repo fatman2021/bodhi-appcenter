@@ -22,8 +22,10 @@ foreach($softbundle as $var)
 {   if($var['Softbundle']['arch'] == 'i386')
    {
 		echo "<p>";
+		echo "&nbsp;&nbsp;";
 		echo $html->link($var['Softbundle']['bundleName'], array('controller' => 'software',      'action' => 'softbundles',$var['Softbundle']['id']));
 		echo "<br />";
+		echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 		echo $var['Softbundle']['bundleShrtDesc'];
 		echo "</p>";
     }
@@ -38,7 +40,8 @@ foreach($softbundle as $var)
 foreach($softPackages as $var)
 {   
     if($var['Software']['arch'] == 'i386')
-    {    echo $html->link(str_replace("_"," ",$var['Software']['softName']), array('controller' => 'software',  'action' => 'showDesc',$var['Software']['softName']));
+    {    echo "&nbsp;&nbsp;";
+         echo $html->link(str_replace("_"," ",$var['Software']['softName']), array('controller' => 'software',  'action' => 'showDesc',$var['Software']['softName']));
 	     echo "<br />";
 	}
  } ?>
@@ -50,7 +53,7 @@ foreach($softPackages as $var)
 
 <h1><a>Software Categories</a></h1> 
 <div> 
- 
+
 <?PHP
 $var="";
 foreach($software as $var)
@@ -75,7 +78,8 @@ foreach($software as $var)
 			<li class="level1">
 			<div class="li"> 
 			
-				<?PHP echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat']))."&nbsp;(".$count.")"; ?>
+				<?PHP echo "&nbsp;&nbsp;";
+				echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat']))."&nbsp;(".$count.")"; ?>
 			</div> 
 			</li> 
 		
