@@ -2467,8 +2467,9 @@ Element.Methods = {
     }
 
     if (parent == document.body) {
-      delta[0] -= document.body.offsetLeft;
-      delta[1] -= document.body.offsetTop;
+      var parentOffset = Element.viewportOffset(parent);
+      delta[0] -= parentOffset[0];
+      delta[1] -= parentOffset[1];
     }
 
     if (options.setLeft)   element.style.left  = (p[0] - delta[0] + options.offsetLeft) + 'px';

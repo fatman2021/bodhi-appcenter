@@ -1,10 +1,20 @@
 div.auto_complete    {
-     position         :absolute;
+     position         :relative;
      width            :250px;
+     top              :126px;
      background-color :white;
      border           :1px solid #fff;
      margin           :0px;
      padding          :0px;
+} 
+#software_search {
+     position :relative;
+     width :250px;
+     top: 126px;
+     background-color :white;
+     border :1px solid #fff;
+     margin :0px;
+     padding :0px;
 } 
 li.selected    { background-color: #fff; }
 h2, .search {
