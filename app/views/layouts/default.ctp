@@ -28,28 +28,17 @@ echo $contents;
 ?>
 <link rel="stylesheet" media="all" type="text/css" href="/css/screen.css" /> 
 <body> 
-<script>
-adjustAcPosition = function(element, update) {
-   if(!update.style.position || update.style.position=='absolute') {
-       update.style.position = 'absolute';
-       Position.clone(element, update, {
-           setHeight: false,
-           offsetTop: '126px'
-       });
-   }
-   Effect.Appear(update,{duration:0.15});
-}
-</script>
 <section>
-<div id='searchBar' align='right'>
-<?php echo $form->create('Software',array('url' => '/software/searchPost')); ?>
+<div id='searchBar' style='text-align:right'>
+<?php echo $form->create('Software', array('url' => '/software/searchPost')); ?>
 <?php 
 echo '<span align="right"><font color="black" size="4">Search for software:&nbsp;</font></span>';
-echo $ajax->autoComplete('Software.search', '/software/search', array('onShow' => 'adjustAcPosition'))?>
+echo $ajax->autoComplete('Software.search', '/software/search')?>
 <?php echo $form->end()?>
 <a href='/software/feed.rss' title='Software update RSS feed'><img src='/img/rss.png' height='28' width='28' /></a>
-<div id='view' class='auto_complete'>
+<div id='SoftwareSearch' class='auto_complete' style="display: none;">
 </div>
+
 </div>
 <div class="page"> 
 <!--Adding for arch types -->
