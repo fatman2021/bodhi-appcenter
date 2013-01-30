@@ -27,7 +27,6 @@ echo $contents;
     echo $javascript->link('scriptaculous');	
 ?>
 <link rel="stylesheet" media="all" type="text/css" href="/css/screen.css" /> 
-<body> 
 <section>
 <div id='searchBar' style='text-align:right'>
 <?php echo $form->create('Software', array('url' => '/software/searchPost')); ?>
