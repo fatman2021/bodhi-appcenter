@@ -32,14 +32,13 @@ echo $contents;
 <div id='searchBar' style='text-align:right'>
 <?php echo $form->create('Software', array('url' => '/software/searchPost')); ?>
 <?php 
-echo '<span align="right"><font color="black" size="4">Search for software:&nbsp;</font></span>';
+echo '<p class=search>Search for software:&nbsp;</p>';
 echo $ajax->autoComplete('Software.search', '/software/search')?>
 <?php echo $form->end()?>
 <a href='/software/feed.rss' title='Software update RSS feed'><img src='/img/rss.png' alt='RSS' height='28' width='28' /></a>
-<div id='SoftwareSearch' class='auto_complete' style="display: none;">
-</div>
 
 </div>
+
 <div class="page"> 
 <!--Adding for arch types -->
 <div class='arch'>

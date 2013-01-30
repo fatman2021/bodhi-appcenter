@@ -7,6 +7,12 @@ div.auto_complete    {
      margin             :0px;
      padding            :0px;
 } 
+p.search    {
+    text-align          :right;
+    font-size           :large; 
+    display             :inline;
+    color               :black;
+}
 div.arch    {
     text-align          :center;
 }
