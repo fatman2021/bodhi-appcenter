@@ -10,10 +10,8 @@
 <div class="level2"> 
  
 <?PHP  
-
 #History
 #cleanedup, now runs using Catorder to change order of categories
-
 foreach($softbundle as $var)
 {   if($var['Softbundle']['arch'] == 'i386')
    {
@@ -25,9 +23,7 @@ foreach($softbundle as $var)
 		echo $var['Softbundle']['bundleShrtDesc'];
 		echo "</p>";
     }
- } ?>
-
-<?PHP
+ }
 #software packages section
 ?>
 <h1>Bodhi Software Packages</h1>
@@ -50,33 +46,34 @@ foreach($softPackages as $var)
 <?PHP
 $var="";
 foreach($software as $var)
-{ 
+{   $ul_closed = false;
 ?>
     <h3><?PHP echo str_replace("_"," ",$var); ?></h3>
     <?PHP
 	for($i = 0; $i < $softcount; $i++)
-	{   $ul_display = True;
+	{   $ul_display = true;	    
 		foreach(${'w00t' . $i} as $w01t)
-		{   if($w01t['Software']['softCat'] == $var){  	
+		{   if($w01t['Software']['softCat'] == $var){ 
+			    # Only want <ul> once for each list not wrapped around every <li> 	
 			    if ($ul_display) {
-				    echo '<ul>';
-					$ul_display = False;
+				    echo PHP_EOL.'<ul>'. PHP_EOL;
+					$ul_display = false;
 				}
 				$count = ClassRegistry::init('Software')->find('count',array('conditions'=>'Software.softSubCat='."'".$w01t['Software']['softSubCat']."' and Software.arch='i386'"));
 			echo '<li class="level1">';
-
 			echo "&nbsp;&nbsp;";
 			echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat']))."&nbsp;(".$count.")"; 
-            echo $ul_display;
-			echo '</li>';
+			echo '</li>' . PHP_EOL;
 			}
 		}
-		if($w01t['Software']['softCat'] == $var)
-		   {
-			echo '</ul>';
-		   }
+		if($w01t['Software']['softCat'] == $var and ! $ul_closed)
+		{   # Admitted hack to keep </ul> from sometimes being generated twice
+		    #  for reasons unknown to me :(
+			echo '</ul>'.PHP_EOL;
+			$ul_closed = true;
+		}
 	}
-	echo "<br />";
+	echo '<br />'.PHP_EOL;
 }
 ?>
 </div>
