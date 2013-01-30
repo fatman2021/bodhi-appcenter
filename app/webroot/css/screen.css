@@ -41,4 +41,7 @@ h2, .search {
     font-family         : Ubuntu;
     font-size           : 2em; 
 }
+h4.appinfo   {
+    display            : inline;
+}
     

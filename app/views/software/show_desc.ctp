@@ -9,7 +9,7 @@ echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$
 <?php
 if (!empty($data[0]['Software']['softScreenie'])){ ?>
 <p> 
-<img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="medialeft" align="left" alt="" width="200" style="margin:5px 5px 5px 5px;"/>
+<img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="medialeft" align="left" alt=" " width="200" style="margin:5px 5px 5px 5px;"/>
 </p>
  <?php 
  } else echo "<br />" ?>
@@ -19,7 +19,7 @@ echo $data[0]['Software']['softDesc'];
 ?>
 
 <p>
-<h4 style="display: inline;">Version:&nbsp;</h4>
+<h4 class="appinfo">Version:&nbsp;</h4>
 <i><?PHP
 echo $data[0]['Software']['version'];
 ?></i>
@@ -29,11 +29,11 @@ echo $data[0]['Software']['version'];
 if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
 {
 ?>
-<h4 style="display: inline;">Download size:&nbsp;</h4><?PHP 
+<h4 class="appinfo">Download size:&nbsp;</h4><?PHP 
 echo $data[0]['Software']['softSize']; 
 ?>
 <br />
-<h4 style="display: inline;">md5 checksum:&nbsp;</h4><?PHP 
+<h4 class="appinfo">md5 checksum:&nbsp;</h4><?PHP 
 echo $data[0]['Software']['md5']; 
 ?>
 <br />
