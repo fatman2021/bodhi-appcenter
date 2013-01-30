@@ -35,14 +35,17 @@ echo $contents;
 echo '<span align="right"><font color="black" size="4">Search for software:&nbsp;</font></span>';
 echo $ajax->autoComplete('Software.search', '/software/search')?>
 <?php echo $form->end()?>
-<a href='/software/feed.rss' title='Software update RSS feed'><img src='/img/rss.png' height='28' width='28' /></a>
+<a href='/software/feed.rss' title='Software update RSS feed'><img src='/img/rss.png' alt='RSS' height='28' width='28' /></a>
 <div id='SoftwareSearch' class='auto_complete' style="display: none;">
 </div>
 
 </div>
 <div class="page"> 
 <!--Adding for arch types -->
-<div style='text-align: center;'>
+<div class='arch'>
+<?PHP 
+if (isset($archTypeDBList)){ 
+?>
 <b>Architectures:&nbsp;&nbsp;</b>
 <?PHP
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
@@ -56,9 +59,10 @@ foreach($archTypeDBList as $var)
 	}
 	else
 	{
-		echo ',&nbsp;';
+		echo ',&nbsp;&nbsp;';
 	}
 	$archCount++;
+}
 }
 ?>
 </div>
@@ -72,10 +76,10 @@ foreach($archTypeDBList as $var)
 <div id='footer'>
 	<?php echo $this->element('sql_dump'); ?>
 	<footer class="gradient">
-		<p><small>&copy; Copyleft Bodhi Linux 2013. All Wrongs Reserved - Hosted by <a target="_blank" href="https://www.vaultnetworks.com">vaultnetworks</a></small></p>
+		<p class='copyleft'>&copy; Copyleft Bodhi Linux 2013. All Wrongs Reserved - Hosted by <a target="_blank" href="https://www.vaultnetworks.com">vaultnetworks</a></p>
 	</footer>
 <?PHP
-echo "<center><font color='black' size='2'>Bodhi Appcenter, &nbsp;".Configure::read( 'Appcenter.build' )."</font></center>";
+echo "<p class='build'>Bodhi Appcenter, &nbsp;".Configure::read( 'Appcenter.build' )."</p>";
 ?>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 	<script>window.jQuery || document.write("&lt;script src='http://www.bodhilinux.com/guts/js/jquery-1.5.1.min.js'&gt;\x3C/script&gt;")</script>

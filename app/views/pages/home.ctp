@@ -1,14 +1,10 @@
-<h2  style="color:black; border-bottom: 1px solid #ff6600; border-bottom-width: auto; display: inline-block; margin-bottom: 3px; padding-bottom: 4px;">Bodhi Linux AppCenter</h2> 
+<h2 class="home">Bodhi Linux AppCenter</h2> 
 <br />
 <div class="level1"> 
-<p> 
-Welcome to the Bodhi Linux software page. 
-</p>
+<p>Welcome to the Bodhi Linux software page. </p>
 <p>Here you will find easy to install software for any task on your Bodhi desktop! </p>
 <p>Note that Midori or Firefox are <strong>REQUIRED</strong> for the “Install Now” method. The “Download” method will work in any browser. Please see the <a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions.</a></p>
-</p> 
-<p>The main page lists only the 32bit software. For now, please use the architecture pages to search for <strong>64bit</strong> and <strong>armel</strong> software or use the software search feature for the same.
-</p>
+<p>The main page lists only the 32bit software. For now, please use the architecture pages to search for <strong>64bit</strong> and <strong>armel</strong> software or use the software search feature for the same.</p>
 </div> 
 <h1>Software bundles</h1> 
 <div class="level2"> 
@@ -45,9 +41,6 @@ foreach($softPackages as $var)
 	     echo "<br />";
 	}
  } ?>
- 
-</div>
- 
 </div>
 <br />
 
@@ -59,40 +52,31 @@ $var="";
 foreach($software as $var)
 { 
 ?>
-<h3><?PHP echo str_replace("_"," ",$var); ?></h3>
-<?PHP
-	
-	for($i=0;$i<$softcount;$i++)
-	{ 
+    <h3><?PHP echo str_replace("_"," ",$var); ?></h3>
+    <?PHP
+	for($i = 0; $i < $softcount; $i++)
+	{   $ul_display = True;
 		foreach(${'w00t' . $i} as $w01t)
-		{
-			if($w01t['Software']['softCat'] == $var)
-			{
-			echo '<div class="level3"> 
-						 <ul>';
-			}
-			if($w01t['Software']['softCat'] == $var)
-			{ 
+		{   if($w01t['Software']['softCat'] == $var){  	
+			    if ($ul_display) {
+				    echo '<ul>';
+					$ul_display = False;
+				}
 				$count = ClassRegistry::init('Software')->find('count',array('conditions'=>'Software.softSubCat='."'".$w01t['Software']['softSubCat']."' and Software.arch='i386'"));
-		?> 
-			<li class="level1">
-			<div class="li"> 
-			
-				<?PHP echo "&nbsp;&nbsp;";
-				echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat']))."&nbsp;(".$count.")"; ?>
-			</div> 
-			</li> 
-		
-	<?PHP 	}
-			if($w01t['Software']['softCat'] == $var and $w01t['Software']['softCat'] != 'The_Bodhi_Store')
-			{
-				echo '</ul></div>';
+			echo '<li class="level1">';
+
+			echo "&nbsp;&nbsp;";
+			echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat']))."&nbsp;(".$count.")"; 
+            echo $ul_display;
+			echo '</li>';
 			}
 		}
-		?>
-	<?PHP
+		if($w01t['Software']['softCat'] == $var)
+		   {
+			echo '</ul>';
+		   }
 	}
-echo "<br />";
+	echo "<br />";
 }
 ?>
 </div>

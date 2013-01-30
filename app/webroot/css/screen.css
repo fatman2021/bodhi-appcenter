@@ -1,24 +1,38 @@
 div.auto_complete    {
-     position         :relative;
-     width            :250px;
-     top              :126px;
-     background-color :white;
-     border           :1px solid #fff;
-     margin           :0px;
-     padding          :0px;
+     position           :relative;
+     width              :250px;
+     top                :126px;
+     background-color   :white;
+     border             :1px solid #ff6600;
+     margin             :0px;
+     padding            :0px;
 } 
-#software_search {
-     position :relative;
-     width :250px;
-     top: 126px;
-     background-color :white;
-     border :1px solid #fff;
-     margin :0px;
-     padding :0px;
-} 
-li.selected    { background-color: #fff; }
+div.arch    {
+    text-align          :center;
+}
+p.copyleft    {
+    color               :#888888;
+    font-size           :small;      
+}
+p.build    {
+    text-align          :center;
+    color               :#5a860a;
+    font-size           :125%;      
+}
+h2.home    {
+    color               :black; 
+    border-bottom       :1px solid #ff6600; 
+    border-bottom-width :auto; 
+    display             :inline-block;
+    margin-bottom       :3px;
+    padding-bottom      : 4px;
+
+}
+li.selected    { 
+    background-color    : #fff;
+}
 h2, .search {
-    font-family: Ubuntu;
-    font-size: 2em; 
+    font-family         : Ubuntu;
+    font-size           : 2em; 
 }
     
