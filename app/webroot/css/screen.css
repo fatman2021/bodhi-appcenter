@@ -35,13 +35,19 @@ h2.home    {
 
 }
 li.selected    { 
-    background-color    : #fff;
+    background-color    :#fff;
 }
 h2, .search {
-    font-family         : Ubuntu;
-    font-size           : 2em; 
+    font-family         :Ubuntu;
+    font-size           :2em; 
 }
 h4.appinfo   {
-    display            : inline;
+    display            :inline;
+}
+img.appbtn   {
+     border            : 0;
+}
+table.appbtn {
+    width              :35%;
 }
     
