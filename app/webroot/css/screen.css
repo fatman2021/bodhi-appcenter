@@ -41,6 +41,9 @@ h2, .search {
     font-family         :Ubuntu;
     font-size           :2em; 
 }
+h2.showdesc   {
+        color           :#5a860a;
+}
 h4.appinfo   {
     display            :inline;
 }

@@ -1,15 +1,15 @@
-<h2><a><?PHP 
-
-#Deny ACL to handle oracle java licensing issues.
-$deny_print_acl = array("Oracle_Java", "Netflix_Desktop");
-
+<h2 class="showdesc"><?PHP 
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
-echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);?></a></h2> 
+echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);
+?></h2> 
 <div> 
 <?php
+#Deny ACL to handle apps with no Download buttons.
+$deny_print_acl = array("Oracle_Java", "Netflix_Desktop");
+
 if (!empty($data[0]['Software']['softScreenie'])){ ?>
 <p> 
-<img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="medialeft" alt=" " width="200" style="margin:5px 5px 5px 5px;"/>
+<img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="medialeft" alt=" " width="200" style="float:left; margin:5px 5px 5px 5px;"/>
 </p>
  <?php 
  } else echo "<br />" ?>
