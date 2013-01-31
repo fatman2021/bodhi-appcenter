@@ -111,8 +111,9 @@ echo "<br /><br />";}
 <?PHP
 if (count($list) != 1)
 {?>
-<h1><a>Related / Similar Applications</a></h1> 
 <div> 
+<h1><a>Related / Similar Applications</a></h1> 
+
 <p>
 <?PHP
 foreach($list as $var)
@@ -131,3 +132,4 @@ foreach($list as $var)
 echo $html->link($data[0]['Software']['softHome'],$data[0]['Software']['softHome']);
 ?>
 </p> 
+</div>

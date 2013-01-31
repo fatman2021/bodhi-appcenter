@@ -69,7 +69,6 @@ foreach($archTypeDBList as $var)
 			<?php echo $this->Session->flash(); ?>
 			<?php echo $content_for_layout; ?>
 </div>
-</div>
 </section>
 <div id='footer'>
 	<?php echo $this->element('sql_dump'); ?>

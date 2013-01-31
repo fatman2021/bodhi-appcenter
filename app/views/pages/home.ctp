@@ -77,3 +77,4 @@ foreach($software as $var)
 }
 ?>
 </div>
+</div>
