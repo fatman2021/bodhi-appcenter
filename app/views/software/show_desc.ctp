@@ -60,7 +60,7 @@ $archCount++;
 ?> 
 </div>
 <br />
-<h1>Installation</h1> 
+<h2 class="install">Installation</h2> 
 <div> 
 <p>Please see the <a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a> for further information.</p> 
 <p>The <strong>Install Now</strong> button is for immediate installation on machines with a good internet connection.</p> 

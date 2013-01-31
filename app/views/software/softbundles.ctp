@@ -2,7 +2,7 @@
 echo $data[0]['Softbundle']['bundleDesc'];
 ?>
 
-<h2><a name="packages" id="packages">Packages</a></h2>
+<h2 class="home">Packages</h2>
 <div>
 <br />
 <p>
@@ -40,17 +40,16 @@ echo $data[0]['Softbundle']['md5'];
 ?>
 </p>
 </div>
-<h2><a name="installation" id="installation">Installation</a></h2>
+<h2 class="install">Installation</h2>
 <div>
 
-<p>
-<table width="35%">
-<tr><td align="center"><a href="<?PHP echo $data[0]['Softbundle']['bundleApt']."?refresh=yep";?>"><img src="http://www.bodhilinux.com/images/installnow.png" border="0"></a></td>
+<table class="appbtn"> 
+<tr>
+<td><a href="<?PHP echo $data[0]['Softbundle']['bundleApt'].'?refresh=yep';?>"><img class="appbtn" src="http://www.bodhilinux.com/images/installnow.png" alt=" "></a></td> 
+<td><a href="<?PHP echo $data[0]['Softbundle']['bundleApt'];?>"><img class="appbtn" src="http://www.bodhilinux.com/images/downloadoffline.png" alt=" "></a></td>
+</tr> 
+</table> 
 
-<td align="center"><a href="<?PHP echo $data[0]['Softbundle']['bundleDown'];?>"><img src="http://www.bodhilinux.com/images/downloadoffline.png" border="0"></a>
-
-</td></tr>
-</table>
 <strong><a href="apt:bodhi-recommends">FAST INSTALL</a></strong> bypasses the apt-get update done with the "Install Now" button and can <strong><u>NOT</u></strong> be used with a fresh installation.
 </p>
 

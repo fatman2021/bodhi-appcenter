@@ -44,13 +44,18 @@ h2, .search {
 h2.showdesc   {
         color           :#5a860a;
 }
+h2.install   {
+        color           :#5a860a;
+        margin-bottom   :3px;
+        padding-bottom  : 4px;
+}
 h4.appinfo   {
-    display            :inline;
+    display             :inline;
 }
 img.appbtn   {
-     border            : 0;
+     border             : 0;
 }
 table.appbtn {
-    width              :35%;
+    width               :35%;
 }
     
