@@ -3,7 +3,6 @@ echo $data[0]['Softbundle']['bundleDesc'];
 ?>
 
 <h2 class="home">Packages</h2>
-<div>
 <br />
 <p>
 <?PHP
@@ -17,9 +16,6 @@ echo "&nbsp;&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softN
 ?>
 </p>
 
-</div>
-<div>
-<p> 
 <h4>Download size:</h4><?PHP 
 echo $data[0]['Softbundle']['softSize']; 
 ?>
@@ -38,10 +34,8 @@ echo $data[0]['Softbundle']['md5'];
 		echo ",&nbsp;".$html->link("64bit","softbundles/"."4"); 
 	}
 ?>
-</p>
-</div>
+<br />
 <h2 class="install">Installation</h2>
-<div>
 
 <table class="appbtn"> 
 <tr>
@@ -51,11 +45,5 @@ echo $data[0]['Softbundle']['md5'];
 </table> 
 
 <strong><a href="apt:bodhi-recommends">FAST INSTALL</a></strong> bypasses the apt-get update done with the "Install Now" button and can <strong><u>NOT</u></strong> be used with a fresh installation.
-</p>
 
-<p>
-Please see the <strong><a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a></strong> for further information.
-
-</p>
-
-</div>
+<p>Please see the <strong><a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a></strong> for further information.</p>
