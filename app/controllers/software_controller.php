@@ -179,6 +179,7 @@ function searchPost()
 			array_shift($metaSoftList);
 			#reverse for priority, show subcat first then meta.
 			$metaSoftList = array_reverse($metaSoftList);
+			$this->set('query', $query);
 			$this->set('result', $metaSoftList);    
 			$this->render('search');
 		}
