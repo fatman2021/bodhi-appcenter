@@ -43,12 +43,13 @@ echo $data[0]['Software']['md5'];
 <br />
 <h4>Available Architectures:</h4><?PHP
 $archCount=0;
+echo "&nbsp;&nbsp;";
 foreach($archTypeList as $var)
 {
 echo $html->link($archLabel[$var['Software']['arch']],"showDesc/".$data[0]['Software']['softName']."/".$var['Software']['arch']);
 if($archCount!=sizeof($archTypeList)-1)
 {
-	echo ",&nbsp;";
+	echo ",&nbsp;&nbsp;";
 }
 else
 {
@@ -101,7 +102,8 @@ if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Soft
 if($data[0]['Software']['arch']!="armel")
 {
 ?>
-<p>Note: The download size will vary for install now method.</p>
+<br /><br />
+<p><strong>Note:</strong> The download size will vary for install now method.</p>
 <?PHP
 } else {
 echo "<br /><br />";}

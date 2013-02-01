@@ -16,34 +16,40 @@ echo "&nbsp;&nbsp;".$html->link(str_replace("_"," ",$data1[0]['Software']['softN
 ?>
 </p>
 
-<h4>Download size:</h4><?PHP 
+<h4 class="appinfo">Download size:&nbsp;</h4><?PHP 
 echo $data[0]['Softbundle']['softSize']; 
 ?>
-<h4>md5 checksum:</h4><?PHP 
+<br />
+<h4 class="appinfo">md5 checksum:&nbsp;</h4><?PHP 
 echo $data[0]['Softbundle']['md5']; 
 ?> 
+<br /><br />
 <h4>Available Architectures:</h4>
 <?PHP
     # Fixme please
     if ($data[0]['Softbundle']['id'] == "1" OR $data[0]['Softbundle']['id'] == "3" ){
-		echo "&nbsp;".$html->link("32bit","softbundles/"."1");
-		echo ",&nbsp;".$html->link("64bit","softbundles/"."3");  
+		echo "&nbsp;&nbsp;".$html->link("32bit","softbundles/"."1");
+		echo ",&nbsp;&nbsp;".$html->link("64bit","softbundles/"."3");  
     }
     else{
-		echo "&nbsp;".$html->link("32bit","softbundles/"."2");
-		echo ",&nbsp;".$html->link("64bit","softbundles/"."4"); 
+		echo "&nbsp;&nbsp;".$html->link("32bit","softbundles/"."2");
+		echo ",&nbsp;&nbsp;".$html->link("64bit","softbundles/"."4"); 
 	}
 ?>
 <br />
+<br />
 <h2 class="install">Installation</h2>
+<p>Please see the <a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a> for further information.</p> 
+<p>The <strong>Install Now</strong> button is for immediate installation on machines with a good internet connection.</p> 
+<p>The <strong>Download</strong> button is to download and transfer the package to a machine with no or slow internet connection.</p> 
 
 <table class="appbtn"> 
 <tr>
 <td><a href="<?PHP echo $data[0]['Softbundle']['bundleApt'].'?refresh=yep';?>"><img class="appbtn" src="http://www.bodhilinux.com/images/installnow.png" alt=" "></a></td> 
-<td><a href="<?PHP echo $data[0]['Softbundle']['bundleApt'];?>"><img class="appbtn" src="http://www.bodhilinux.com/images/downloadoffline.png" alt=" "></a></td>
+<td><a href="<?PHP echo $data[0]['Softbundle']['bundleDown'];?>"><img class="appbtn" src="http://www.bodhilinux.com/images/downloadoffline.png" alt=" "></a></td>
 </tr> 
 </table> 
 
 <strong><a href="apt:bodhi-recommends">FAST INSTALL</a></strong> bypasses the apt-get update done with the "Install Now" button and can <strong><u>NOT</u></strong> be used with a fresh installation.
-
-<p>Please see the <strong><a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a></strong> for further information.</p>
+<br /><br />
+<p><strong>Note:</strong> The download size will vary for install now method.</p>
