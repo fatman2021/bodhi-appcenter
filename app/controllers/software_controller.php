@@ -181,7 +181,7 @@ function searchPost()
 			$metaSoftList = array_reverse($metaSoftList);
 			$this->set('query', $query);
 			$this->set('result', $metaSoftList);    
-			$this->render('search');
+			$this->render('search_page');
 		}
 		else
 		{

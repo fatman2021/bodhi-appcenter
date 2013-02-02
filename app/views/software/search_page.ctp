@@ -2,6 +2,14 @@
 /* File: /app/views/software/search.ctp */
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 if (isset($result)) {
+if (empty($result)){
+    print "<h2 class='showdesc'>No results for: <i>".$query."</i></h2>";
+}
+else
+{
+    print "<h2 class='showdesc'>Results for: <i>".$query."</i></h2>";
+}
+print "<br />";
 print '<ul style="text-align:left">';
 foreach ($result as $user)
 {
