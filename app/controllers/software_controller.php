@@ -129,7 +129,7 @@ function search() {
 	if (!empty($this->data['Software']['search']))
 	{
 		#santize and remove any stupid typo errors/ sql injection code
-		$query = $this -> Sanitize -> paranoid($this->data['Software']['search'],array(' '));
+		$query = $this -> Sanitize -> paranoid($this->data['Software']['search'],array(' ','-','_'));
 		#future handler to ensure that we can limit the search to trigger only for more than N characters
 		if (strlen($query) >= 3)
 		{
@@ -159,16 +159,16 @@ function searchPost()
 {
 	#postback characters
 	if (!empty($this->data['Software']['search']))
-	{
+	{   
 		#santize and remove any stupid typo errors/ sql injection code
-		$query = $this -> Sanitize -> paranoid($this->data['Software']['search'],array(' '));
+		$query = $this -> Sanitize -> paranoid($this->data['Software']['search'],array(' ','-','_'));
 		#future handler to ensure that we can limit the search to trigger only for more than N characters
 		if (strlen($query) >= 3)
 		{
 			#Call to meta Handler
 			$metaSoftList = $this->metaHandler($query,$query,$query,$this->Session->read('arch'));
 			#woah launch a mega DB search
-			$result = $this -> Software -> find('all',array('conditions'=>"softName LIKE '%".$query."%' OR softCat LIKE '%".str_replace(" ","_",$query)."%' OR softSubCat LIKE '%".str_replace(" ","_",$query)."%'"));
+			$result = $this -> Software -> find('all',array('conditions'=>"softName LIKE '%".str_replace(" ","_",$query)."%' OR softCat LIKE '%".str_replace(" ","_",$query)."%' OR softSubCat LIKE '%".str_replace(" ","_",$query)."%'"));
 			foreach($result as $var)
 			{
 				array_push($metaSoftList,$var['Software']['softName'].",".$var['Software']['arch']);
