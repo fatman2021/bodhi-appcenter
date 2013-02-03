@@ -21,7 +21,7 @@ echo "<br/>";
 <?PHP
 }
 else
-{   echo "<img class='opps' src='/img/404.png' alt=' ' />";
+{   echo "<img class='oops' src='/img/404.png' alt=' ' />";
     echo "<h3 style='text-align: center;'>Architecture not supported. Please post a support request on the <a href='http://forums.bodhilinux.com'>forums.</a></h3>";
 }
 ?>
