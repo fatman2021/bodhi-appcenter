@@ -58,11 +58,14 @@ img.appbtn   {
 table.appbtn {
     width               :35%;
 }
-img.opps    {
+img.oops    {
     display             :block;
     margin-left         :auto;
     margin-right        :auto;
     margin-bottom       :3px;
     padding-bottom      :10px;
+}
+p.searcherr   {
+        text-align      :center;
 }
     
