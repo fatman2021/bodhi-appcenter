@@ -28,7 +28,6 @@ p.build    {
 h2.home    {
     color               :black; 
     border-bottom       :1px solid #ff6600; 
-    border-bottom-width :auto; 
     display             :inline-block;
     margin-bottom       :3px;
     padding-bottom      : 4px;
@@ -68,4 +67,63 @@ img.oops    {
 p.searcherr   {
         text-align      :center;
 }
-    
+.floatright
+{
+float: right;
+margin: 0 0 10px 10px;
+clear: right;
+}
+.floatleft
+{
+float: left;
+margin: 10px 10px 0 0;
+clear: left;
+}
+p.containingbox{ margin-top: 0;}
+.noteclassic {
+      margin:2em;
+      margin-left:auto;
+      margin-right:auto;
+      width:70% !important;
+      min-height:40px;
+      clear:both;
+      text-align:justify;
+      vertical-align:middle;
+      border-collapse:collapse;
+      padding:15px 20px 15px 80px;
+      background-position:20px 50%;
+      background-repeat:no-repeat;
+      -moz-border-radius:20px;
+      -khtml-border-radius:20px;
+      border-radius:20px;
+      background-color:#eef;
+      background-image:url(http://wiki.bodhilinux.com/lib/plugins/note/images/note.png);
+      }
+.notewarning{
+      margin:2em;
+      margin-left:auto;
+      margin-right:auto;
+      width:70% !important;
+      min-height:40px;
+      clear:both;
+      text-align:justify;
+      vertical-align:middle;
+      border-collapse:collapse;
+      padding:15px 20px 15px 80px;
+      background-position:20px 50%;
+      background-repeat:no-repeat;
+      -moz-border-radius:20px;
+      -khtml-border-radius:20px;
+      border-radius:20px;
+      background-color:#eef;
+      background-image:url(http://wiki.bodhilinux.com/lib/plugins/note/images/warning.png);
+}
+pre.code{
+      margin:1em;
+      margin-left:auto;
+      margin-right:auto;
+      padding-left:10px;
+      width:90% !important;
+border: 1px dashed rgb(255, 102, 0);
+background-color:#efeff6;
+}
