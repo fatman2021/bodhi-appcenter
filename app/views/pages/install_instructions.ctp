@@ -1,7 +1,7 @@
 <h2 class="home"><a id="installation_instructions">Installation Instructions</a></h2>
 <br /><br />
 <h1>Install Now</h1>
-<div class="level2">
+<div>
 <br />
 <img src="http://www.bodhilinux.com/images/installnow.png" class="floatleft" alt=" " />
 <p class="containingbox"><strong>Bodhi Linux</strong> makes this method of installation so easy there is hardly any need for instructions at all. Just click the <strong>Install Now</strong> button on the page of the application you wish to install, enter your password in the pop-up window that appears and confirm that you do want to install the package in the next pop-up window. That&#039;s it! In a few minutes (or less) your new software will be ready to go.</p>
@@ -60,5 +60,5 @@
 </pre>
 
 <p>The same confirmation/password windows from the <abbr title="Graphical User Interface">GUI</abbr> install will appear now, and end by informing you of the Main Menu location for the application when finished.</p>
-
 </div>
+<div class="noteclassic"><strong>NOTE:</strong> Bodhi's .bod files support several command line options which may be useful in certain situations, see our wiki article: <a href="http://wiki.bodhilinux.com/doku.php?id=bod_cli_arguments">.Bod File Command Line Arguments</a>.</div>
