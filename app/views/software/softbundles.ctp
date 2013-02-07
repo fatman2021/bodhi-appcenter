@@ -1,5 +1,13 @@
 <?PHP
+echo "<h2 class='showdesc'>";
+$archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
+echo str_replace("_"," ",$data[0]['Softbundle']['bundleName']."/&nbsp;".$archLabel[$data[0]['Softbundle']['arch']]);
+echo "</h2>"; 
+
+echo "<div>";
+echo "<br />";
 echo $data[0]['Softbundle']['bundleDesc'];
+echo "</div>";
 ?>
 
 <h2 class="home">Packages</h2>
@@ -38,7 +46,7 @@ echo $data[0]['Softbundle']['md5'];
 ?>
 <br />
 <br />
-<h2 class="install">Installation</h2>
+<h2 id="installation" class="install">Installation</h2>
 <p>Please see the <a href="/pages/install_instructions" class="wikilink1" title="installation_instructions">Installation Instructions</a> for further information.</p> 
 <p>The <strong>Install Now</strong> button is for immediate installation on machines with a good internet connection.</p> 
 <p>The <strong>Download</strong> button is to download and transfer the package to a machine with no or slow internet connection.</p> 
