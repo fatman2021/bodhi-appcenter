@@ -12,11 +12,11 @@ if (!empty($data[0]['Software']['softScreenie'])){ ?>
 <img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="floatleft" alt=" " width="200" />
  <?php 
  } else echo "<br />" ?>
-<p>
+
 <?PHP 
 echo $data[0]['Software']['softDesc'];
 ?>
-</p>
+
 </div>
 <div style="clear:both;"> 
 <br />
@@ -27,7 +27,6 @@ if (!empty($data[0]['Software']['softFeatures'])){
 	echo $data[0]['Software']['softFeatures'];
 }
 ?>
-</p>
 </div>
 <div style="clear:both;"></div>
 <h4 class="appinfo">Version:&nbsp;</h4>
@@ -128,7 +127,6 @@ if (count($list) != 1)
 <div> 
 <h1><a>Related / Similar Applications</a></h1> 
 
-<p>
 <?PHP
 foreach($list as $var)
 {	if ($var != $data[0]['Software']['softName']){
@@ -136,14 +134,10 @@ foreach($list as $var)
     }
 }
 ?>
-</p> 
 <?PHP 
 } ?>
 <h1><a>Software Homepage</a></h1> 
-
-<p> 
+ 
 <?PHP
 echo $html->link($data[0]['Software']['softHome'],$data[0]['Software']['softHome']);
 ?>
-</p> 
-</div>
