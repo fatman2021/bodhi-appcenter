@@ -125,19 +125,20 @@ echo "<br /><br />";}
 if (count($list) != 1)
 {?>
 <div> 
-<h1><a>Related / Similar Applications</a></h1> 
+<h2 class="install">Related / Similar Applications</h2> 
 
 <?PHP
 foreach($list as $var)
 {	if ($var != $data[0]['Software']['softName']){
-		echo $html->link(str_replace("_"," ",$var), array('controller' => 'software','action' => 'showDesc',$var))."<br/>";
+		echo "&nbsp;&nbsp;" . $html->link(str_replace("_"," ",$var), array('controller' => 'software','action' => 'showDesc',$var))."<br/>";
     }
 }
 ?>
 <?PHP 
 } ?>
-<h1><a>Software Homepage</a></h1> 
+<br />
+<h2 class="install">Software Homepage</h2> 
  
 <?PHP
-echo $html->link($data[0]['Software']['softHome'],$data[0]['Software']['softHome']);
+echo "&nbsp;&nbsp;" . $html->link($data[0]['Software']['softHome'],$data[0]['Software']['softHome']);
 ?>
