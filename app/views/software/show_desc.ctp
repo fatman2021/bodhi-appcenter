@@ -2,23 +2,34 @@
 $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);
 ?></h2> 
-<div> 
+<div>
+	<div> 
 <?php
 #Deny ACL to handle apps with no Download buttons.
 $deny_print_acl = array("Oracle_Java", "Netflix_Desktop");
 
 if (!empty($data[0]['Software']['softScreenie'])){ ?>
-<p> 
-<img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="medialeft" alt=" " width="200" style="float:left; margin:5px 5px 5px 5px;"/>
-</p>
+<img src="<?PHP echo $data[0]['Software']['softScreenie'];?>" class="floatleft" alt=" " width="200" />
  <?php 
  } else echo "<br />" ?>
-
+<p>
 <?PHP 
 echo $data[0]['Software']['softDesc'];
 ?>
+</p>
+</div>
+<div style="clear:both;"> 
+<br />
 
-<p>
+<?php 
+if (!empty($data[0]['Software']['softFeatures'])){
+	echo "<h2 class='home' >Features</h2>";
+	echo $data[0]['Software']['softFeatures'];
+}
+?>
+</p>
+</div>
+<div style="clear:both;"></div>
 <h4 class="appinfo">Version:&nbsp;</h4>
 <i><?PHP
 echo $data[0]['Software']['version'];
@@ -59,6 +70,7 @@ $archCount++;
 }
  
 ?> 
+</div>
 </div>
 <br />
 <h2 class="install">Installation</h2> 

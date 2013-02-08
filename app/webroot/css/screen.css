@@ -127,3 +127,8 @@ pre.code{
 border: 1px dashed rgb(255, 102, 0);
 background-color:#efeff6;
 }
+
+li.desc:before {
+    content: "• ";
+    color: red; /* or whatever color you prefer */
+}
