@@ -30,17 +30,16 @@ if (!empty($data[0]['Software']['softFeatures'])){
 }
 ?>
 </div>
-<div style="clear:both;"></div>
-<h4 class="appinfo">Version:&nbsp;</h4>
-<i><?PHP
-echo $data[0]['Software']['version'];
-?></i>
-<br />
-<br />
+<div style="clear:both;">
 <?PHP
 if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
 {
 ?>
+<h4 class="appinfo">Version:&nbsp;</h4>
+<i><?PHP
+echo $data[0]['Software']['version'];
+?></i><br />
+<br />
 <h4 class="appinfo">Download size:&nbsp;</h4><?PHP 
 echo $data[0]['Software']['softSize']; 
 ?>
@@ -48,11 +47,11 @@ echo $data[0]['Software']['softSize'];
 <h4 class="appinfo">md5 checksum:&nbsp;</h4><?PHP 
 echo $data[0]['Software']['md5']; 
 ?>
+</div>
 <br />
 <?PHP
 }
 ?> 
-<br />
 <h4>Available Architectures:</h4><?PHP
 $archCount=0;
 echo "&nbsp;&nbsp;";
