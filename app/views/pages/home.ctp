@@ -60,9 +60,15 @@ foreach($software as $var)
 					$ul_display = false;
 				}
 				$count = ClassRegistry::init('Software')->find('count',array('conditions'=>'Software.softSubCat='."'".$w01t['Software']['softSubCat']."' and Software.arch='i386'"));
-			echo '<li class="level1">';
+			echo '<li class="count">';
 			echo "&nbsp;&nbsp;";
-			echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat']))."&nbsp;(".$count.")"; 
+			if ($count ==1){
+				echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat'])); 
+			}
+			else
+			{
+				echo $html->link(str_replace("_"," ",$w01t['Software']['softSubCat']), array( 'controller' => 'software',      'action' => 'showL2',$w01t['Software']['softSubCat']))."&nbsp;&nbsp;".$count; 
+			}
 			echo '</li>' . PHP_EOL;
 			}
 		}
