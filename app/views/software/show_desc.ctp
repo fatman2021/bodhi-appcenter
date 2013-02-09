@@ -3,7 +3,9 @@ $archLabel = array('i386'=>'32bit','armel'=>'armel','x86_64'=>'64bit');
 echo str_replace("_"," ",$data[0]['Software']['softName']."/&nbsp;".$archLabel[$data[0]['Software']['arch']]);
 ?></h2> 
 <div>
+<br />
 	<div> 
+
 <?php
 #Deny ACL to handle apps with no Download buttons.
 $deny_print_acl = array("Oracle_Java", "Netflix_Desktop");
