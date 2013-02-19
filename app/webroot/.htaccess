@@ -1,3 +1,15 @@
+<IfModule mod_fcgid.c>
+Options ExecCGI
+AddHandler fcgid-script .php
+FCGIWrapper /usr/bin/php-cgi .php
+</IfModule>
+
+# Don't show directory listings for URLs which map to a directory.
+Options -Indexes
+
+# Follow symbolic links in this directory.
+Options +FollowSymLinks
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-d
