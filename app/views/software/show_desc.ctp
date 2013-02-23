@@ -31,15 +31,15 @@ if (!empty($data[0]['Software']['softFeatures'])){
 ?>
 </div>
 <div style="clear:both;">
-<?PHP
-if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
-{
-?>
 <h4 class="appinfo">Version:&nbsp;</h4>
 <i><?PHP
 echo $data[0]['Software']['version'];
 ?></i><br />
 <br />
+<?PHP
+if(!in_array($data[0]['Software']['softName'],$deny_print_acl) && $data[0]['Software']['arch']!="armel")
+{
+?>
 <h4 class="appinfo">Download size:&nbsp;</h4><?PHP 
 echo $data[0]['Software']['softSize']; 
 ?>
